@@ -1,4 +1,4 @@
-model: ["large"]
+model: ["weights/DelineateAnything.pt"]
 method: main
 
 execution_args:
@@ -44,7 +44,7 @@ passes:
     tile_size: null
     tile_step: 0.5
     model_args:
-      - name: large
+      - name: weights/DelineateAnything.pt
         minimal_confidence: 0.005
         use_half: true
 
