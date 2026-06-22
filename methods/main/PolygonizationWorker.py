@@ -7,6 +7,7 @@ from affine import Affine
 from osgeo import osr, ogr
 
 import numpy as np
+from .utils import use_traditional_gis_axis_order
 
 class PolygonizationWorker:
     @staticmethod
@@ -17,6 +18,7 @@ class PolygonizationWorker:
 
         srs = osr.SpatialReference()
         srs.ImportFromWkt(srs_wkt)
+        use_traditional_gis_axis_order(srs)
 
         min_area_m2 = config["minimum_area_m2"]
         min_part_area_m2 = config["minimum_part_area_m2"]
@@ -36,6 +38,7 @@ class PolygonizationWorker:
         
         equal_area_srs = osr.SpatialReference()
         equal_area_srs.ImportFromEPSG(6933)
+        use_traditional_gis_axis_order(equal_area_srs)
         coord_transform = osr.CoordinateTransformation(srs, equal_area_srs)
 
         height, width = array.shape

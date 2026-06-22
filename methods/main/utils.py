@@ -6,7 +6,14 @@ logger = logging.getLogger(__name__)
 
 __all__ = [
     "create_geopackage_with_same_projection",
+    "use_traditional_gis_axis_order",
 ]
+
+
+def use_traditional_gis_axis_order(spatial_ref):
+    if hasattr(osr, "OAMS_TRADITIONAL_GIS_ORDER"):
+        spatial_ref.SetAxisMappingStrategy(osr.OAMS_TRADITIONAL_GIS_ORDER)
+    return spatial_ref
 
 
 def create_geopackage_with_same_projection(dst_path, layer_name, projection, override_if_exists, pixel_size):
@@ -19,6 +26,7 @@ def create_geopackage_with_same_projection(dst_path, layer_name, projection, ove
     proj_wkt = projection
     spatial_ref = osr.SpatialReference()
     spatial_ref.ImportFromWkt(proj_wkt)
+    use_traditional_gis_axis_order(spatial_ref)
 
     driver = ogr.GetDriverByName("GPKG")
     gpkg_ds = driver.CreateDataSource(dst_path)

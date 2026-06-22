@@ -346,8 +346,10 @@ def postdelineation_merge(layer_info, filter_config):
 
         # creating transform to equali-area projection
         src_srs = layer.GetSpatialRef()
+        use_traditional_gis_axis_order(src_srs)
         dst_src = osr.SpatialReference()
         dst_src.ImportFromEPSG(6933)
+        use_traditional_gis_axis_order(dst_src)
 
         transform = osr.CoordinateTransformation(src_srs, dst_src)
 
