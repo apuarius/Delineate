@@ -78,7 +78,7 @@ filtering_args:
   minimum_middleground_field_hole_area_m2: 5000
 
 simplification_args:
-  simplify: true
+  simplify: false
   epsilon_scale: 2
   num_workers: -1
   raster_resolution: -1
