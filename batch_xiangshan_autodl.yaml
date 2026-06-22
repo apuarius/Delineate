@@ -1,10 +1,10 @@
 base_config: conf_xiangshan.yaml
 
-data_root: /root/autodl-pub/Delineate/data/images
-output_root: /root/autodl-pub/Delineate/data/delineated
-temp_root: /root/autodl-pub/Delineate/data/temp
+data_root: /root/autodl-tmp/Delineate/data/images
+output_root: /root/autodl-tmp/Delineate/data/delineated
+temp_root: /root/autodl-tmp/Delineate/data/temp
 keep_temp: false
-mask_root: /root/autodl-pub/Delineate/data/masks
+mask_root: /root/autodl-tmp/Delineate/data/masks
 
 include:
   - xiangshan
